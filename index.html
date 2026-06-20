@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OmniMe - Intelligent AI Coding Agent with Local LLM & Persistent Memory</title>
+    <meta name="description" content="OmniMe is an open-source AI assistant and developer agent. Features local LLMs via Ollama, persistent MemGPT orchestrator memory, shadow git versioning, and a React-based Web IDE.">
+    <meta name="keywords" content="AI coding agent, Ollama local LLM, coding assistant, developer agent, MemGPT persistent memory, shadow git versioning, Web IDE, open source developer tool">
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Sticky Navigation Bar -->
+    <header class="header" id="main-header">
+        <div class="container header-container">
+            <a href="#" class="logo-wrapper" id="logo-link">
+                <img src="assets/logo.png" alt="OmniMe Logo" class="logo-img">
+                <span class="logo-text">Omni<span>Me</span></span>
+            </a>
+            
+            <nav class="nav-menu" id="navigation-menu">
+                <a href="#features" class="nav-link" id="nav-features">Features</a>
+                <a href="#architecture" class="nav-link" id="nav-architecture">Architecture</a>
+                <a href="#gui-showcase" class="nav-link" id="nav-gui">IDE GUI</a>
+                <a href="#installation" class="nav-link" id="nav-install">Installation</a>
+            </nav>
+            
+            <div class="nav-actions">
+                <a href="https://github.com/omnimedev/OmniMe" target="_blank" rel="noopener" class="btn btn-secondary nav-github-btn" id="nav-github">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section" id="hero">
+            <div class="hero-glow-1"></div>
+            <div class="hero-glow-2"></div>
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <div class="badge">
+                        <span class="badge-dot"></span>
+                        <span class="badge-text">v1.2.0 Open Source Release</span>
+                    </div>
+                    <h1 class="hero-title">
+                        Your Self-Evolving <br>
+                        <span class="gradient-text">AI Coding Agent</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Run cloud-scale AI intelligence on your local machine. Powered by MemGPT persistent memory, modular skills, and shadow git versioning. Optimized for Ollama.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="https://drive.google.com/file/d/1bcvha75nWIF_sUSo95f7d41sx4cKRqCJ/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-primary" id="hero-download-win">
+                            <i class="fab fa-windows"></i> Download for Windows
+                        </a>
+                        <a href="https://drive.google.com/file/d/1fuwAHmFbgjaKWvjsMsgFvU-HwsKBgSHa/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-glass" id="hero-download-linux">
+                            <i class="fab fa-linux"></i> Download for Linux
+                        </a>
+                    </div>
+                    <div class="hero-secondary-actions" style="margin-top: 20px; font-size: 0.95rem; color: var(--text-secondary);">
+                        Prefer CLI? <a href="#installation" style="color: var(--accent-cyan); text-decoration: none; font-weight: 500;">View CLI Installation</a> or <a href="https://github.com/omnimedev/OmniMe" target="_blank" rel="noopener" style="color: var(--accent-cyan); text-decoration: none; font-weight: 500;">Star on GitHub</a>.
+                    </div>
+                </div>
+                
+                <div class="hero-visual">
+                    <div class="terminal-mockup" id="terminal-window">
+                        <div class="terminal-header">
+                            <div class="terminal-dots">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                            </div>
+                            <div class="terminal-title">omnime-cli</div>
+                        </div>
+                        <div class="terminal-body" id="hero-terminal-body">
+                            <!-- Typing effect simulated via JS -->
+                            <div class="terminal-line"><span class="prompt">$</span> <span class="typed-command-1"></span></div>
+                            <div class="terminal-line output log-init" style="display: none;"><span class="success">[MemGPT]</span> Memory loaded. Found active project "OmniMePages"</div>
+                            <div class="terminal-line output log-vcs" style="display: none;"><span class="warning">[VCS]</span> Shadow Git initialized at .omnime/.git</div>
+                            <div class="terminal-line output log-ollama" style="display: none;"><span class="info">[LLM]</span> Model gemma4:12b online via Ollama (Local GPU accelerated)</div>
+                            <div class="terminal-line output log-agent" style="display: none;"><span class="prompt">&gt;</span> Hello! I am your workspace agent. Ready to plan, implement features, or run skills. How can I help you today?</div>
+                            <div class="terminal-line cursor-line" style="display: none;"><span class="prompt">&gt;</span> <span class="typed-command-2"></span><span class="terminal-cursor"></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Grid Section -->
+        <section class="features-section" id="features">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Designed for Developer Autonomy</h2>
+                    <p class="section-subtitle">OmniMe brings the power of state-of-the-art coding assistants directly to your terminal and local IDE setup.</p>
+                </div>
+                
+                <div class="features-grid">
+                    <!-- Feature Card 1 -->
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>MemGPT Memory</h3>
+                        <p>Persistent SQLite-backed project memory so the agent never forgets your past choices, architecture decisions, or configuration settings.</p>
+                    </div>
+                    
+                    <!-- Feature Card 2 -->
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper">
+                            <i class="fas fa-puzzle-piece"></i>
+                        </div>
+                        <h3>Modular Skills System</h3>
+                        <p>Opt-in capabilities managed via a local <code>skills.yaml</code>. Spawns specialized, focused sub-agents to execute web searches, refactoring, or custom scripts.</p>
+                    </div>
+                    
+                    <!-- Feature Card 3 -->
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper">
+                            <i class="fas fa-code-branch"></i>
+                        </div>
+                        <h3>Shadow Git VCS</h3>
+                        <p>Automatic checkpoints of your workspace to an isolated directory before execution. Safely rollback changes instantly at any time using <code>/undo</code>.</p>
+                    </div>
+                    
+                    <!-- Feature Card 4 -->
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <h3>React & Vite GUI IDE</h3>
+                        <p>A beautiful web-based interface powered by <code>pywebview</code>. Built-in xterm.js terminal, Git source control sidebar, and global settings toggles.</p>
+                    </div>
+                    
+                    <!-- Feature Card 5 -->
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <h3>Ollama Optimization</h3>
+                        <p>Engineered to extract maximum performance from local LLMs. Run open-weights models like Gemma 12B completely offline on your GPU.</p>
+                    </div>
+                    
+                    <!-- Feature Card 6 -->
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper">
+                            <i class="fas fa-shield-halved"></i>
+                        </div>
+                        <h3>Zero-Configuration Privacy</h3>
+                        <p>Complete control over your proprietary code. Keep your codebase on-premise and local without sending data to third-party endpoints.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Architecture Section -->
+        <section class="architecture-section" id="architecture">
+            <div class="arch-glow"></div>
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Under the Hood Architecture</h2>
+                    <p class="section-subtitle">OmniMe coordinates memory, tools, and ephemeral agents to execute workflows cleanly.</p>
+                </div>
+                
+                <div class="architecture-container">
+                    <div class="arch-visual-flow">
+                        <!-- Node 1: User / UI -->
+                        <div class="arch-node" id="arch-user-node" data-desc="The React/Vite Desktop IDE or interactive CLI sends user intents and project context to the agent runtime.">
+                            <div class="node-icon"><i class="fas fa-user-gear"></i></div>
+                            <h4>User / IDE UI</h4>
+                            <span class="node-badge">Webview2 / CLI</span>
+                        </div>
+                        
+                        <div class="arch-connector-line horizontal">
+                            <div class="pulse"></div>
+                        </div>
+                        
+                        <!-- Node 2: Orchestrator -->
+                        <div class="arch-node active" id="arch-orchestrator" data-desc="The persistent MemGPT orchestrator matches tasks, processes conversational updates, updates long-term memory, and triggers tool executions.">
+                            <div class="node-icon"><i class="fas fa-network-wired"></i></div>
+                            <h4>MemGPT Orchestrator</h4>
+                            <span class="node-badge">AgentBlock</span>
+                        </div>
+                        
+                        <div class="arch-connector-line horizontal">
+                            <div class="pulse"></div>
+                        </div>
+                        
+                        <!-- Node 3: Skills Runner -->
+                        <div class="arch-node" id="arch-skills" data-desc="Ephemeral Worker sub-agents are spawned on-demand for active skills. They query the system, run planning cycles, and apply code diffs.">
+                            <div class="node-icon"><i class="fas fa-gears"></i></div>
+                            <h4>Skills & Worker</h4>
+                            <span class="node-badge">Sub-Agents</span>
+                        </div>
+                    </div>
+                    
+                    <div class="arch-sub-flow">
+                        <!-- Left Node: Local LLM -->
+                        <div class="arch-node side-node" id="arch-llm" data-desc="Provides semantic processing, code analysis, and reasoning. Fully optimized for Ollama running locally or cloud LLMs.">
+                            <div class="node-icon"><i class="fas fa-microchip"></i></div>
+                            <h4>Ollama / Cloud LLM</h4>
+                        </div>
+                        
+                        <!-- Right Node: Shadow Git / SQLite -->
+                        <div class="arch-node side-node" id="arch-vcs" data-desc="Guarantees safety. Pre-checkouts code, tracks workspace edits, allows instant rollback, and stores chat histories in SQLite.">
+                            <div class="node-icon"><i class="fas fa-database"></i></div>
+                            <h4>SQLite & Shadow VCS</h4>
+                        </div>
+                    </div>
+                    
+                    <!-- Dynamic Details Panel -->
+                    <div class="arch-details-card" id="arch-details-panel">
+                        <h4 id="arch-detail-title">MemGPT Orchestrator</h4>
+                        <p id="arch-detail-text">The persistent MemGPT orchestrator matches tasks, processes conversational updates, updates long-term memory, and triggers tool executions.</p>
+                        <small class="arch-hint"><i class="fas fa-circle-info"></i> Hover or tap a node above to inspect its role in the architecture.</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive IDE GUI Showcase Section -->
+        <section class="gui-showcase-section" id="gui-showcase">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">A Modern Web-based IDE Interface</h2>
+                    <p class="section-subtitle">OmniMe bundles a beautiful React-based frontend desktop GUI. Experience fluid navigation, full file editing, and direct terminal control.</p>
+                </div>
+                
+                <div class="gui-tabs-container">
+                    <div class="gui-tabs-list">
+                        <button class="gui-tab-btn active" id="gui-tab-editor" data-tab="editor">
+                            <i class="fas fa-file-code"></i> Editor & Workspace
+                        </button>
+                        <button class="gui-tab-btn" id="gui-tab-terminal" data-tab="terminal">
+                            <i class="fas fa-terminal"></i> Interactive PTY Terminal
+                        </button>
+                        <button class="gui-tab-btn" id="gui-tab-git" data-tab="git">
+                            <i class="fas fa-code-merge"></i> Git Versioning
+                        </button>
+                        <button class="gui-tab-btn" id="gui-tab-settings" data-tab="settings">
+                            <i class="fas fa-sliders"></i> Global Settings
+                        </button>
+                    </div>
+                    
+                    <div class="gui-display-panel">
+                        <!-- Tab Content: Editor -->
+                        <div class="gui-tab-content active" id="gui-content-editor">
+                            <div class="editor-mockup">
+                                <div class="editor-sidebar">
+                                    <div class="sidebar-title"><i class="fas fa-folder-open"></i> WORKSPACE</div>
+                                    <div class="file-tree">
+                                        <div class="file-item active"><i class="fab fa-python"></i> main.py</div>
+                                        <div class="file-item"><i class="fab fa-python"></i> cli.py</div>
+                                        <div class="file-item"><i class="fab fa-python"></i> skills.py</div>
+                                        <div class="file-item"><i class="fas fa-file-lines"></i> config.yaml</div>
+                                        <div class="file-item folder"><i class="fas fa-folder"></i> omnime</div>
+                                    </div>
+                                </div>
+                                <div class="editor-main">
+                                    <div class="editor-file-header">
+                                        <span>main.py</span>
+                                        <span class="file-badge">Python</span>
+                                    </div>
+                                    <pre class="code-lines"><code><span class="line-num">1</span><span class="keyword">import</span> sys
+<span class="line-num">2</span><span class="keyword">from</span> omnime.config <span class="keyword">import</span> load_config
+<span class="line-num">3</span><span class="keyword">from</span> omnime.project <span class="keyword">import</span> ProjectManager
+<span class="line-num">4</span>
+<span class="line-num">5</span><span class="keyword">def</span> <span class="func">main</span>():
+<span class="line-num">6</span>    <span class="comment"># Load project settings and start IDE server</span>
+<span class="line-num">7</span>    config = load_config()
+<span class="line-num">8</span>    project = ProjectManager.load_active()
+<span class="line-num">9</span>    project.start_gui()
+<span class="line-num">10</span>
+<span class="line-num">11</span><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:
+<span class="line-num">12</span>    main()</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Tab Content: Terminal -->
+                        <div class="gui-tab-content" id="gui-content-terminal">
+                            <div class="terminal-container-dark">
+                                <div class="terminal-output-panel">
+                                    <div class="terminal-text"><span class="terminal-user">omnimedev@local:~/OmniMe$</span> python main.py</div>
+                                    <div class="terminal-text success">Starting OmniMe IDE Headless Server...</div>
+                                    <div class="terminal-text info">IP Address: http://127.0.0.1:3000</div>
+                                    <div class="terminal-text">[System] Webview2 controller attached successfully.</div>
+                                    <div class="terminal-text-animated"><span class="terminal-user">omnimedev@local:~/OmniMe$</span> <span class="terminal-cursor"></span></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Tab Content: Git -->
+                        <div class="gui-tab-content" id="gui-content-git">
+                            <div class="git-mockup">
+                                <div class="git-status-column">
+                                    <div class="git-section-title">Changes (Staged)</div>
+                                    <div class="git-file modified"><i class="fas fa-pen-to-square"></i> Modified: omnime/skills.py</div>
+                                    <div class="git-file added"><i class="fas fa-circle-plus"></i> Untracked: omnime/new_tool.py</div>
+                                </div>
+                                <div class="git-commit-column">
+                                    <div class="git-input-group">
+                                        <input type="text" class="git-commit-msg" placeholder="Automated Skill Commit: Add research tool" disabled>
+                                        <button class="btn btn-primary git-btn" disabled>Commit to Shadow Git</button>
+                                    </div>
+                                    <div class="git-history">
+                                        <div class="git-commit-item">
+                                            <span class="commit-hash">d4f29a2</span>
+                                            <span class="commit-msg">Pre-plan checkout checkpoint</span>
+                                            <span class="commit-time">2 mins ago</span>
+                                        </div>
+                                        <div class="git-commit-item">
+                                            <span class="commit-hash">8e9321c</span>
+                                            <span class="commit-msg">Initialize MemGPT project database</span>
+                                            <span class="commit-time">1 hour ago</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Tab Content: Settings -->
+                        <div class="gui-tab-content" id="gui-content-settings">
+                            <div class="settings-mockup">
+                                <div class="settings-sidebar">
+                                    <div class="settings-category active"><i class="fas fa-gear"></i> General</div>
+                                    <div class="settings-category"><i class="fas fa-palette"></i> Themes</div>
+                                    <div class="settings-category"><i class="fas fa-microchip"></i> Models</div>
+                                </div>
+                                <div class="settings-fields">
+                                    <div class="settings-row">
+                                        <label>Font Size</label>
+                                        <select disabled>
+                                            <option>14px (Recommended)</option>
+                                            <option>16px</option>
+                                            <option>18px</option>
+                                        </select>
+                                    </div>
+                                    <div class="settings-row">
+                                        <label>Word Wrap</label>
+                                        <input type="checkbox" checked disabled>
+                                    </div>
+                                    <div class="settings-row">
+                                        <label>UI Theme</label>
+                                        <div class="theme-toggles">
+                                            <button class="theme-btn active" disabled><i class="fas fa-moon"></i> Dark Theme</button>
+                                            <button class="theme-btn" disabled><i class="fas fa-sun"></i> Light Theme</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Installation Section -->
+        <section class="installation-section" id="installation">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Quick Installation & Startup</h2>
+                    <p class="section-subtitle">Deploy OmniMe to your system and configure your first autonomous project workspace.</p>
+                </div>
+                
+                <div class="install-tabs-wrapper">
+                    <div class="install-tabs-header">
+                        <button class="install-tab-btn active" id="install-tab-desktop" data-install="desktop">
+                            <i class="fas fa-desktop"></i> Desktop App
+                        </button>
+                        <button class="install-tab-btn" id="install-tab-pip" data-install="pip">
+                            <i class="fas fa-cube"></i> Pip Package
+                        </button>
+                        <button class="install-tab-btn" id="install-tab-source" data-install="source">
+                            <i class="fas fa-code"></i> Build from Source
+                        </button>
+                    </div>
+                    
+                    <div class="install-tabs-content">
+                        <!-- Install Content: Desktop -->
+                        <div class="install-content active" id="install-content-desktop">
+                            <p class="install-instructions">Download the precompiled, standalone desktop application for your operating system:</p>
+                            <div class="download-buttons-group">
+                                <a href="https://drive.google.com/file/d/1bcvha75nWIF_sUSo95f7d41sx4cKRqCJ/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-primary" id="download-win-btn">
+                                    <i class="fab fa-windows"></i> Download for Windows (.exe)
+                                </a>
+                                <a href="https://drive.google.com/file/d/1fuwAHmFbgjaKWvjsMsgFvU-HwsKBgSHa/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-glass" id="download-linux-btn">
+                                    <i class="fab fa-linux"></i> Download for Linux (AppImage)
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Install Content: Pip -->
+                        <div class="install-content" id="install-content-pip">
+                            <p class="install-instructions">Ensure Python 3.11+ is installed. Execute the command below to fetch the agent block configuration and start the main loop:</p>
+                            <div class="code-box">
+                                <pre id="code-pip">pip install omnime</pre>
+                                <button class="copy-btn" id="copy-pip-btn" data-clipboard="pip install omnime" title="Copy to clipboard">
+                                    <i class="far fa-copy"></i> Copy
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Install Content: Source -->
+                        <div class="install-content" id="install-content-source">
+                            <p class="install-instructions">Clone the repository and install requirements. Recommended for local adjustments or developer integrations:</p>
+                            <div class="code-box">
+                                <pre id="code-source">git clone https://github.com/omnimedev/OmniMe.git
+cd OmniMe
+python -m venv .env
+source .env/bin/activate
+pip install -r requirements.txt</pre>
+                                <button class="copy-btn" id="copy-source-btn" data-clipboard="git clone https://github.com/omnimedev/OmniMe.git && cd OmniMe && python -m venv .env && source .env/bin/activate && pip install -r requirements.txt" title="Copy to clipboard">
+                                    <i class="far fa-copy"></i> Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="launch-card">
+                    <div class="launch-info">
+                        <h3>Launching the GUI</h3>
+                        <p>Once installed, start the React desktop application via Pywebview (with automatic fallback to a local server) by calling:</p>
+                        <div class="code-box inline-code-box">
+                            <pre>python main.py</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Call to Action -->
+        <section class="cta-section">
+            <div class="cta-glow"></div>
+            <div class="container cta-container">
+                <h2>Take Back Control of Your AI Workflow</h2>
+                <p>Run your coding assistant fully on-premise, secure, and tailorable. Join the open source developer movement today.</p>
+                <div class="cta-buttons">
+                    <a href="#installation" class="btn btn-primary btn-large">Get Started Now</a>
+                    <a href="https://github.com/omnimedev/OmniMe" target="_blank" rel="noopener" class="btn btn-glass btn-large"><i class="fab fa-github"></i> Star Repository</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="#" class="logo-wrapper">
+                    <img src="assets/logo.png" alt="OmniMe Logo" class="logo-img">
+                    <span class="logo-text">Omni<span>Me</span></span>
+                </a>
+                <p>Intelligent, persistent, and secure autonomous AI agent system designed for developers.</p>
+            </div>
+            
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h5>Project</h5>
+                    <a href="https://github.com/omnimedev/OmniMe" target="_blank" rel="noopener">GitHub Repository</a>
+                    <a href="https://github.com/omnimedev/OmniMe/issues" target="_blank" rel="noopener">Issues Tracker</a>
+                    <a href="https://github.com/omnimedev/OmniMe/releases" target="_blank" rel="noopener">Releases</a>
+                </div>
+                <div class="footer-column">
+                    <h5>License</h5>
+                    <span>Released under the MIT License.</span>
+                    <span>© 2026 OmniMe Developers.</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom Script -->
+    <script src="script.js"></script>
+</body>
+</html>
