@@ -63,15 +63,15 @@
                         Run cloud-scale AI intelligence on your local machine. Powered by MemGPT persistent memory, modular skills, and shadow git versioning. Optimized for Ollama.
                     </p>
                     <div class="hero-actions">
-                        <a href="https://drive.google.com/file/d/11Jxc59tDgyvl24ffxS_YB6nwvNtQWHx3/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-primary" id="hero-download-win">
-                            <i class="fab fa-windows"></i> Download for Windows
+                        <a href="#installation" class="btn btn-primary" id="hero-download-win">
+                            <i class="fab fa-windows"></i> Install for Windows
                         </a>
-                        <a href="https://drive.google.com/file/d/1fuwAHmFbgjaKWvjsMsgFvU-HwsKBgSHa/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-glass" id="hero-download-linux">
-                            <i class="fab fa-linux"></i> Download for Linux
+                        <a href="#installation" class="btn btn-glass" id="hero-download-linux">
+                            <i class="fab fa-linux"></i> Install for Linux
                         </a>
                     </div>
                     <div class="hero-secondary-actions" style="margin-top: 20px; font-size: 0.95rem; color: var(--text-secondary);">
-                        Prefer CLI? <a href="#installation" style="color: var(--accent-cyan); text-decoration: none; font-weight: 500;">View CLI Installation</a> or <a href="https://github.com/opalacoderdev/OmniMe" target="_blank" rel="noopener" style="color: var(--accent-cyan); text-decoration: none; font-weight: 500;">Star on GitHub</a>.
+                        <a href="https://github.com/opalacoderdev/OmniMe" target="_blank" rel="noopener" style="color: var(--accent-cyan); text-decoration: none; font-weight: 500;"><i class="fab fa-github"></i> Star on GitHub</a>
                     </div>
                 </div>
                 
@@ -378,7 +378,7 @@
                 <div class="install-tabs-wrapper">
                     <div class="install-tabs-header">
                         <button class="install-tab-btn active" id="install-tab-desktop" data-install="desktop">
-                            <i class="fas fa-desktop"></i> Desktop App
+                            <i class="fas fa-bolt"></i> 1-Click Install
                         </button>
                         <button class="install-tab-btn" id="install-tab-pip" data-install="pip">
                             <i class="fas fa-cube"></i> Pip Package
@@ -391,14 +391,22 @@
                     <div class="install-tabs-content">
                         <!-- Install Content: Desktop -->
                         <div class="install-content active" id="install-content-desktop">
-                            <p class="install-instructions">Download the precompiled, standalone desktop application for your operating system:</p>
-                            <div class="download-buttons-group">
-                                <a href="https://drive.google.com/file/d/11Jxc59tDgyvl24ffxS_YB6nwvNtQWHx3/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-primary" id="download-win-btn">
-                                    <i class="fab fa-windows"></i> Download for Windows (.exe)
-                                </a>
-                                <a href="https://drive.google.com/file/d/1fuwAHmFbgjaKWvjsMsgFvU-HwsKBgSHa/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-glass" id="download-linux-btn">
-                                    <i class="fab fa-linux"></i> Download for Linux (AppImage)
-                                </a>
+                            <p class="install-instructions">Open your terminal or PowerShell and run the following command to download and install OmniMe instantly:</p>
+                            
+                            <h4 style="margin-top: 15px; margin-bottom: 10px; color: var(--text-primary); font-weight: 500;"><i class="fab fa-windows"></i> Windows</h4>
+                            <div class="code-box">
+                                <pre id="code-win">irm https://raw.githubusercontent.com/omnimedev/OmniMe/main/install.ps1 | iex</pre>
+                                <button class="copy-btn" id="copy-win-btn" data-clipboard="irm https://raw.githubusercontent.com/omnimedev/OmniMe/main/install.ps1 | iex" title="Copy to clipboard">
+                                    <i class="far fa-copy"></i> Copy
+                                </button>
+                            </div>
+
+                            <h4 style="margin-top: 25px; margin-bottom: 10px; color: var(--text-primary); font-weight: 500;"><i class="fab fa-linux"></i> Linux</h4>
+                            <div class="code-box">
+                                <pre id="code-linux">curl -fsSL https://raw.githubusercontent.com/omnimedev/OmniMe/main/install.sh | bash</pre>
+                                <button class="copy-btn" id="copy-linux-btn" data-clipboard="curl -fsSL https://raw.githubusercontent.com/omnimedev/OmniMe/main/install.sh | bash" title="Copy to clipboard">
+                                    <i class="far fa-copy"></i> Copy
+                                </button>
                             </div>
                         </div>
 
